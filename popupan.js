@@ -1,5 +1,5 @@
 
-	var url_popup = 'https://bit.ly/2r37SFT';
+	var url_popup = 'https://ngoctruongland.blogspot.com/';
 
       //<![CDATA[
 	  // var url_ppp = 'https://ngoctruongland.blogspot.com/';
