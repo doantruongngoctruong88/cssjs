@@ -113,17 +113,16 @@ jQuery( "body" ).append(divpopup);
 var titleform='Đăng ký Form';
 var urlform="https://docs.google.com/forms/d/e/1FAIpQLSfLmBC0f3ipvca5eZeH48HotuzHmbF96XAMhjaMhOFKjmerRg/formResponse";
 var urlchuyen=window.location.href;
-var hovaten="1250230813";
-var dienthoai="1342171878";
-var email="1521921394";
-var duan="1224420625";
+var hovaten="362972618";
+var dienthoai="1166962823";
+var email="1000599478";
+var duan="293206715";
 var submittitle='Đăng ký tư vấn';
 var submittedform=false;
 var titleheader="ĐĂNG KÝ TƯ VẤN NHẬN ƯU ĐÃI";
-var hotline="0898880505";
+var hotline="0931342229";
 var linkhientai=window.location.href;
-var thoigiancookie=1;
-var thoigianhien=100000;
+var thoigianhien=180000;
 var formdiv='<div class="popup-body"><iframe id="hidden_iframethanh" name="hidden_iframethanh" onload="thanhxet()" style="display:none;"></iframe><div class="box-thanh-form"><div class="img"></div><div class="thanhform-level1"><h2><a class="close-thanhfaceseo-modal">X</a></h2></div><div id="cems-subscription" class="cems-subscription"><div class="sss-form-content thanhgform_wrapper"> <form class="form-hasBg" onsubmit="submittedform=true;" target="hidden_iframethanh" method="post" action="'+urlform+'"><div class="gform_body"><h2 class="form-title yellow-text-gradient">'+titleheader+'</h2><div class="description">					<p>Vui lòng điền chính xác các thông tin bên dưới để nhận tài liệu của dự án</p>				</div>     <ul class="thanhtop_label"> ';
 formdiv+= '<li class="sss-form-control gfield ">  <div class="sss-form-control-inner">                               <div class="ginput_container">                  <input class="medium" name="entry.'+hovaten+'" maxlength="70" id="your_name" placeholder="Họ tên" value="" type="text">                </div>              </div>            </li> ';
 formdiv+= '<li class="sss-form-control gfield ">              <div class="sss-form-control-inner">                              <div class="ginput_container">                  <input class="medium" name="entry.'+email+'" maxlength="320" id="email_addr" placeholder="Email" value="" type="email"/>                </div>              </div>            </li> ';
@@ -141,11 +140,15 @@ function thanhxet(){
 
 if(submittedform) {
 	window.location="https://ngoctruongland.blogspot.com/";
-	
-	 if(document.cookie.indexOf("adf") == -1)
-                   {
-                   setCookie('formdangky','dahien',thoigiancookie);
-                   }
+var linkhientai=window.location;
+if(getCookie(linkhientai)){
+                	
+    }else{
+                   
+                    setCookie(linkhientai,'1',thoigianhien); 
+    }
+
+
 
      jQuery('#myModalthanh').css('display','none');				   
 	 jQuery('.thanhfaceseo-modal-bg').css('display','none');	
@@ -153,15 +156,34 @@ if(submittedform) {
 	}	
 }
 
+
+ function setCookie(cname, cvalue, exdays) {
+                var d = new Date();
+                d.setTime(d.getTime() + exdays);
+                var expires = "expires="+d.toUTCString();
+                document.cookie = cname + "=" + cvalue + "; " + expires;
+            }
+             
+            function getCookie(cname) {
+                var name = cname + "=";
+                var ca = document.cookie.split(';');
+                for(var i=0; i<ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0)==' ') c = c.substring(1);
+                    if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+                }
+                return "";
+            }
 		
 function showform(){
-	//alert(document.cookie.indexOf("dahien"));
-	if(document.cookie.indexOf("adf") == -1){
-		document.cookie = "adfpopunder1=adf";
-		   
-			jQuery('#myModalthanh').thanhfaceseo(jQuery('#myModalthanh').data());
-	}
+	var linkhientai=window.location;
+	if(getCookie(linkhientai)){
+                	
+    }else{
+                    jQuery('#myModalthanh').thanhfaceseo(jQuery('#myModalthanh').data());
+                    setCookie(linkhientai,'1',thoigianhien); 
+    }	
 }
-var action = setTimeout(function(){
-    showform();
-}, thoigianhien);
+
+var myVar=setInterval(function () {showform()}, 1000);
+
